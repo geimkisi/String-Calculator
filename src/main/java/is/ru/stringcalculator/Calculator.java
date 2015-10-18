@@ -26,6 +26,7 @@ public class Calculator {
 		return numbers.split("\n|,");
 	}
 
+	// Monster.inc
 	private static String[] splitNumbersWithDelimiter(String numbers){
 		String delimeter = "";
 		String onlyNumbers = "";
