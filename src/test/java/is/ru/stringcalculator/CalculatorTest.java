@@ -96,6 +96,16 @@ public class CalculatorTest {
 	public void testWithLongDelimiterStars(){
 		assertEquals(6, Calculator.add("//[***]\n1***2***3"));
 	}
+
+	@Test
+	public void testWithMultibleDelimeters(){
+		assertEquals(6, Calculator.add("//[*][%]\n1*2%3"));
+	}
+
+	@Test
+	public void testWithLongMultibleDelimeters(){
+		assertEquals(6, Calculator.add("//[***][%%%]\n1***2%%%3"));
+	}
 }
 
 

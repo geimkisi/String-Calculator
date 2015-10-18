@@ -38,21 +38,32 @@ public class Calculator {
 		String delimeter = "";
 		String onlyNumbers = "";
 		if (numbers.contains("]")) {
-			for(int i = 3; numbers.charAt(i) != ']'; i++){
-				if(numbers.charAt(i) == '*'){
-					delimeter = delimeter + "\\" + numbers.charAt(i);
+			int numberOfDelimeters = 0;
+			for(int i = 0; i < numbers.length(); i++){
+				if(numbers.charAt(i) == ']'){
+					numberOfDelimeters++;
 				}
-				else{
-					delimeter = delimeter + numbers.charAt(i);
+			}
+			int i = 3;
+			for(int j = 0; j < numberOfDelimeters; j++){
+				for(; numbers.charAt(i) != ']'; i++){
+					if(numbers.charAt(i) == '*'){
+						delimeter = delimeter + "\\" + numbers.charAt(i);
+					}
+					else{
+						delimeter = delimeter + numbers.charAt(i);
+					}
 				}
+				delimeter = delimeter + "|";
+				i = i + 2;
 			}
 		}
 		else{
-			delimeter = numbers.charAt(2) + "";
+			delimeter = numbers.charAt(2) + "|";
 		}
 
 		onlyNumbers = numbers.substring(numbers.indexOf('\n')+1);
-		return onlyNumbers.split( delimeter + "|\n|,");
+		return onlyNumbers.split( delimeter + "\n|,");
 	}
 
 	private static int sum(String[] numbers){
