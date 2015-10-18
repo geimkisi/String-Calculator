@@ -35,9 +35,24 @@ public class Calculator {
 	}
 
 	private static String[] splitNumbersWithDelimiter(String numbers){
-		char delimeter = numbers.charAt(2);
-		String onlyNumbers = numbers.substring(4);
-		return onlyNumbers.split(delimeter + "|\n|,");
+		String delimeter = "";
+		String onlyNumbers = "";
+		if (numbers.contains("]")) {
+			for(int i = 3; numbers.charAt(i) != ']'; i++){
+				if(numbers.charAt(i) == '*'){
+					delimeter = delimeter + "\\" + numbers.charAt(i);
+				}
+				else{
+					delimeter = delimeter + numbers.charAt(i);
+				}
+			}
+		}
+		else{
+			delimeter = numbers.charAt(2) + "";
+		}
+
+		onlyNumbers = numbers.substring(numbers.indexOf('\n')+1);
+		return onlyNumbers.split( delimeter + "|\n|,");
 	}
 
 	private static int sum(String[] numbers){

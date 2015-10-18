@@ -86,8 +86,17 @@ public class CalculatorTest {
 	public void NumbersCantBeOver1KNoSmallNumber(){
 		assertEquals(0, Calculator.add("1001,2000,4000"));
 	}
-}
 
+	@Test
+	public void testWithLongDelimiter(){
+		assertEquals(6, Calculator.add("//[ooo]\n1ooo2ooo3"));
+	}
+
+	@Test
+	public void testWithLongDelimiterStars(){
+		assertEquals(6, Calculator.add("//[***]\n1***2***3"));
+	}
+}
 
 
 
