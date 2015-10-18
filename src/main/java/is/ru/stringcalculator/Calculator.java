@@ -6,7 +6,7 @@ public class Calculator {
 		if(text == null || text.equals("")){
 			return 0;
 		}
-		else if(text.contains("-")){
+		if(text.contains("-")){
 			String numbers = "Negatives not allowed: ";
 			for(int i = 0; i < 1000; i++){
 				if(text.contains("-" + i )){
@@ -43,8 +43,13 @@ public class Calculator {
 	private static int sum(String[] numbers){
 		int total = 0;
 		for(String number : numbers){
-			total += toInt(number);
+			if(toInt(number) <= 1000){
+				total += toInt(number);
+			}
 		}
 		return total;
 	}
 }
+
+
+

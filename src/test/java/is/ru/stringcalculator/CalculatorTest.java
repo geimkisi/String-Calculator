@@ -77,6 +77,15 @@ public class CalculatorTest {
 		assertEquals(caughtException.getMessage(), "Negatives not allowed: -4,-5");
 	}
 	
+	@Test
+	public void NumbersCantBeOver1K(){
+		assertEquals(2, Calculator.add("1001,2"));
+	}
+
+		@Test
+	public void NumbersCantBeOver1KNoSmallNumber(){
+		assertEquals(0, Calculator.add("1001,2000,4000"));
+	}
 }
 
 
