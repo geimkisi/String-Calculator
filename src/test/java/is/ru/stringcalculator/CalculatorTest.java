@@ -13,4 +13,20 @@ public class CalculatorTest {
 	public void testEmptyString() {
 		assertEquals(0, Calculator.add(""));
 	}
+
+	@Test
+	public void testOneNumber() {
+		assertEquals(2, Calculator.add("2"));
+	}
+
+	@Test
+	public void testTwoNumbers() {
+		assertEquals(3, Calculator.add("1,2"));
+	}	
+
+	@Test
+    public void testMultipleNumbers(){
+    	assertEquals(6, Calculator.add("1,2,3"));
+    }
+
 }
