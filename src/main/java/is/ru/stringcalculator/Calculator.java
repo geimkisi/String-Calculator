@@ -7,14 +7,7 @@ public class Calculator {
 			return 0;
 		}
 		if(text.contains("-")){
-			String numbers = "Negatives not allowed: ";
-			for(int i = 0; i < 1000; i++){
-				if(text.contains("-" + i )){
-					numbers = numbers + "-" + i + ",";
-				}
-			}
-			numbers = numbers.substring(0, numbers.length() - 1);
-			throw new NegativesNotAllowed(numbers);
+			throwExceptionIfNegative(text);
 		}
 		else if ('/' == text.charAt(0) && '/' == text.charAt(1)) {
 			return sum(splitNumbersWithDelimiter(text));
@@ -22,8 +15,7 @@ public class Calculator {
 		else if(text.contains(",") || text.contains("\n")){
 			return sum(splitNumbers(text));
 		}
-		else
-			return toInt(text);
+		return toInt(text);
 	}
 
 	private static int toInt(String number){
@@ -74,6 +66,17 @@ public class Calculator {
 			}
 		}
 		return total;
+	}
+
+	private static void throwExceptionIfNegative(String text){
+	String numbers = "Negatives not allowed: ";
+	for(int i = 0; i < 1000; i++){
+		if(text.contains("-" + i )){
+			numbers = numbers + "-" + i + ",";
+		}
+	}
+	numbers = numbers.substring(0, numbers.length() - 1);
+	throw new NegativesNotAllowed(numbers);
 	}
 }
 
