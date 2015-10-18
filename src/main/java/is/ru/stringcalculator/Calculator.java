@@ -6,6 +6,9 @@ public class Calculator {
 		if(text == null || text.equals("")){
 			return 0;
 		}
+		else if ('/' == text.charAt(0) && '/' == text.charAt(1)) {
+			return sum(splitNumbersWithDelimiter(text));
+		}
 		else if(text.contains(",") || text.contains("\n")){
 			return sum(splitNumbers(text));
 		}
@@ -18,18 +21,20 @@ public class Calculator {
 	}
 
 	private static String[] splitNumbers(String numbers){
-	    
-	    return numbers.split("\n|,");
+		return numbers.split("\n|,");
 	}
-      
-    private static int sum(String[] numbers){
- 	    int total = 0;
-        for(String number : numbers){
-		    total += toInt(number);
+
+	private static String[] splitNumbersWithDelimiter(String numbers){
+		char delimeter = numbers.charAt(2);
+		String onlyNumbers = numbers.substring(4);
+		return onlyNumbers.split(delimeter + "|\n|,");
+	}
+
+	private static int sum(String[] numbers){
+		int total = 0;
+		for(String number : numbers){
+			total += toInt(number);
 		}
 		return total;
-    }
-
-
-
+	}
 }
